@@ -1,0 +1,44 @@
+﻿@model WebApplication1.Models.Petition
+
+@{
+    ViewData["Title"] = "Створити петицію";
+}
+
+<h1>Створити петицію</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title">Заголовок</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content">Зміст</label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author">Автор</label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Зображення</label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPublished">Опубліковано</label>
+        <input asp-for="IsPublished" type="checkbox" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IsSigned">Підписано</label>
+        <input asp-for="IsSigned" type="checkbox" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="VoteCount">Кількість голосів</label>
+        <input asp-for="VoteCount" type="number" class="form-control" />
+        <span asp-validation-for="VoteCount" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Створити</button>
+</form>

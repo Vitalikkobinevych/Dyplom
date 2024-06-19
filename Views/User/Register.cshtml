@@ -1,0 +1,25 @@
+﻿@model WebApplication1.ViewModels.RegisterLoginViewModel
+@{
+    ViewData["Title"] = "Реєстрація";
+}
+
+<h1>Реєстрація</h1>
+
+<form asp-controller="Account" asp-action="Register" method="post">
+    <div class="form-group">
+        <label asp-for="Username">Ім'я користувача</label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Пароль</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">Підтвердження паролю</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Зареєструватися</button>
+</form>

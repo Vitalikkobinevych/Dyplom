@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Петиції</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .header {
+            background-color: #007bff;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #0056b3;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 3em;
+            }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .petition-item {
+            flex: 1 1 calc(33.333% - 40px);
+            margin: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .petition-item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .petition-item h2 {
+                font-size: 2em;
+                margin-bottom: 15px;
+                color: #333;
+                text-align: center;
+                text-transform: uppercase;
+                transition: color 0.3s;
+            }
+
+            .petition-item img {
+                max-width: 100%;
+                height: auto;
+                margin: 0 auto 15px;
+                display: block;
+                border-radius: 10px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+                .petition-item img:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+                }
+
+            .petition-item p {
+                font-size: 1.2em;
+                line-height: 1.6;
+                margin-bottom: 15px;
+                text-align: justify;
+            }
+
+            .petition-item button {
+                background-color: #ff4081;
+                color: white;
+                border: none;
+                padding: 20px 40px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 1.5em;
+                display: block;
+                margin: 20px auto;
+                transition: background-color 0.3s, transform 0.3s;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+                .petition-item button:hover {
+                    background-color: #e91e63;
+                    transform: translateY(-2px);
+                }
+
+        .progress-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Петиції</h1>
+    </div>
+    <div class="main-content">
+        <div class="petition-item">
+            <h2>@Model.Title</h2>
+            <img src="@Model.ImageUrl" alt="@Model.Title">
+            <p>@Model.Description</p>
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar">0%</div>
+            </div>
+            <button onclick="openModal()">Проголосувати</button>
+        </div>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Дякуємо за ваш голос!</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            updateProgressBar();
+        });
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+
+        function updateProgressBar() {
+            var elem = document.getElementById("progressBar");
+            var target = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
+            elem.style.width = target + '%';
+            elem.innerHTML = target + '%';
+        }
+    </script>
+</body>
+</html>
+`

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<WebApplication1.Models.PetitionViewModel>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Петиції</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .petition-item {
+            flex: 1 1 calc(33.333% - 40px);
+            margin: 10px;
+            background-color: #ffffff;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+            .petition-item h2 {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+
+            .petition-item img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto 10px;
+            }
+
+            .petition-item p {
+                margin: 0;
+            }
+
+            .petition-item a {
+                display: block;
+                margin: 10px 0;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+                .petition-item a:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h>Петиції</h>
+    </div>
+    <div class="main-content">
+        @foreach (var petition in Model)
+        {
+            <div class="petition-item">
+                <h2>@petition.Title</h2>
+                <img src="@petition.ImageUrl" alt="@petition.Title">
+                <p>@petition.Description</p>
+                <a href="@Url.Action("Details", "Petition", new { id = petition.Id })">Детальніше</a>
+            </div>
+        }
+    </div>
+</body>
+</html>
